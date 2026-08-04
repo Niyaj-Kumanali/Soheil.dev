@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail, MapPin } from "lucide-react"
 import { LinkedInIcon } from "@/components/LinkedInIcon"
-import { profile } from "@/lib/siteData"
+import { profile, impactStats } from "@/lib/siteData"
 
 export function Hero() {
   return (
@@ -16,21 +16,23 @@ export function Hero() {
         <div className="absolute bottom-1/4 left-1/3 size-64 rounded-full bg-accent/10 blur-3xl" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-2 lg:gap-20">
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-12 px-6 py-16 md:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
         <div className="animate-in fade-in duration-300">
           <p className="text-sm font-medium tracking-widest text-accent uppercase">
             {profile.eyebrow}
           </p>
-          <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-            {profile.headline}
+          <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-5xl">
+            {profile.headline.split(profile.headlineHighlight)[0]}
+            <span className="block text-accent">{profile.headlineHighlight}</span>
+            {profile.headline.split(profile.headlineHighlight)[1]}
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-secondary sm:text-xl">
             {profile.subhead}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 pt-2">
-            <a href="#projects">
+            <a href="#contact">
               <Button size="lg">
-                View Projects
+                Contact
                 <ArrowRight data-icon="inline-end" />
               </Button>
             </a>
@@ -63,6 +65,17 @@ export function Hero() {
               LinkedIn
             </a>
           </div>
+
+          <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-4">
+            {impactStats.map((stat) => (
+              <div key={stat.label}>
+                <dd className="text-3xl font-bold text-accent tabular-nums">
+                  {stat.value}
+                </dd>
+                <dt className="mt-1 text-sm text-secondary">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
         </div>
 
         <div className="relative mx-auto hidden w-full max-w-[420px] lg:block">

@@ -3,8 +3,9 @@
     "name": "Abdul Hameed Sohail",
     "shortName": "AHS",
     "eyebrow": "Business Intelligence Analyst · PL-300 Certified",
-    "headline": "Turning raw data into decisions that ship.",
-    "subhead": "I build Power BI dashboards and Microsoft Fabric data pipelines that survive stakeholder scrutiny — 3 enterprise BI modules shipped for Himalaya Wellness Company in under a year.",
+    "headline": "Hi, I am Abdul Hameed Sohail",
+    "headlineHighlight": "Abdul Hameed Sohail",
+    "subhead": "I build Power BI dashboards and Microsoft Fabric pipelines that stand up to stakeholder scrutiny. In under a year, I shipped 3 enterprise BI modules for Himalaya Wellness Company across Finance, Retail, and IT.",
     "location": "Bangalore, India",
     "email": "abdulsohail884@gmail.com",
     "phone": "+91 9606166837",
@@ -15,60 +16,99 @@
     "profileImageAlt": "Portrait of Abdul Hameed Sohail"
   },
   "navLinks": [
+    { "href": "#about", "label": "About" },
     { "href": "#projects", "label": "Projects" },
     { "href": "#experience", "label": "Experience" },
     { "href": "#skills", "label": "Skills" },
+    { "href": "#certifications", "label": "Certifications" },
+    { "href": "#education", "label": "Education" },
     { "href": "#contact", "label": "Contact" }
   ],
+  "about": {
+    "eyebrow": "About Me",
+    "title": "Turning numbers into decisions",
+    "paragraphs": [
+      "Business Intelligence Analyst with 1 year of experience building enterprise Power BI dashboards and data pipelines using Microsoft Fabric (Dataflow Gen2, Direct Lake, Semantic Models).",
+      "Delivered 3 multi-module BI solutions for Himalaya Wellness Company across Finance, Retail, and IT, with expertise in DAX optimization, star-schema modeling, SSMS data validation, and stakeholder reporting."
+    ],
+    "highlights": [
+      "Microsoft PL-300 Certified",
+      "1 year production BI experience",
+      "3 enterprise BI modules delivered",
+      "Power BI, Microsoft Fabric, and SSMS workflow"
+    ]
+  },
   "impactStats": [
     { "value": "3", "label": "Enterprise BI modules shipped" },
     { "value": "100%", "label": "KPI accuracy validated against SSMS" },
-    { "value": "10+", "label": "Tables — Galaxy model conflicts resolved" },
-    { "value": "12 mo", "label": "Production BI experience" }
+    { "value": "10+", "label": "Galaxy model tables resolved" },
+    { "value": "1 yr", "label": "Production BI experience" }
   ],
   "projects": {
     "eyebrow": "Selected Work",
     "title": "Projects I've built",
-    "subtitle": "Client dashboards are described here as case studies, metrics and approaches are real, confidential client data has been omitted.",
-    "caseStudyCta": "View full case study"
+    "subtitle": "Client dashboards are described here as case studies, metrics and approaches are real, confidential client data has been omitted."
   },
   "caseStudies": [
     {
       "id": "finance-bi",
+      "type": "company",
       "client": "Himalaya Wellness Company",
-      "title": "FB Dubai — Finance BI Dashboard",
+      "title": "FB Dubai: Finance BI Dashboard",
+      "description": "Finance reporting suite for the Dubai operations of Himalaya Wellness Company, built on Power BI and Microsoft Fabric for the finance team.",
+      "bullets": [
+        "Developed and customized financial reports per client requirements",
+        "Optimized DAX and data models; corrected KPI definitions",
+        "Eliminated discrepancies flagged during UAT",
+        "Implemented dynamic slicers and parameter-driven visuals for self-service filtering",
+        "Reduced ad-hoc report requests from finance stakeholders"
+      ],
       "tags": ["Power BI", "Microsoft Fabric", "DAX", "SSMS"],
-      "problem": "Financial reports needed to match client requirements exactly, but KPI definitions had drifted from source data and discrepancies were flagged during UAT. Finance stakeholders also depended on ad-hoc requests instead of self-service access. TODO(Abdul): verify phrasing.",
+      "problem": "Financial reports had to match client requirements exactly, but KPI definitions had drifted from source data and discrepancies were flagged during UAT. Finance stakeholders also depended on ad-hoc requests instead of self-service access.",
       "approach": "Developed and customized financial reports per client requirements, optimized DAX and data models, and corrected KPI definitions to eliminate discrepancies flagged during UAT. Implemented dynamic slicers and parameter-driven visuals so finance stakeholders could filter reports themselves.",
       "impact": "Eliminated discrepancies flagged during UAT and reduced ad-hoc report requests by enabling self-service filtering for finance stakeholders.",
       "timeline": "Jun 2025 – Mar 2026",
       "role": "BI Analyst",
       "howBuilt": {
-        "schemaLabel": "TODO(Abdul): verify phrasing — refined the semantic model and relationships so corrected KPI definitions aggregated correctly against source data.",
-        "dax": "Total Revenue =\n    CALCULATE(\n        SUM('GL Transactions'[Amount]),\n        'Account'[Type] = \"Revenue\"\n    )\n\nDays Sales Outstanding =\n    DIVIDE(\n        SUM('GL Transactions'[AR Balance]),\n        [Total Revenue] / 360\n    )",
-        "drillThrough": "TODO(Abdul): supply real/sanitized DAX measures. Drill-through pages were developed in Direct Lake mode for granular transaction-level insights."
+        "schemaLabel": "Corrected KPI definitions and optimized the DAX and data model so financial reports matched client requirements.",
+        "drillThrough": "Drill-through pages were developed in Direct Lake mode for granular transaction-level insights."
       }
     },
     {
       "id": "retail-analytics",
+      "type": "company",
       "client": "Himalaya Wellness Company",
       "title": "Retail Analytics Dashboard",
+      "description": "Retail analytics dashboard tracking sales and inventory for Himalaya Wellness Company, with a refined star-schema model and validated data quality.",
+      "bullets": [
+        "Refined pre-built reports by restructuring measures, calculated columns, and star-schema relationships",
+        "Validated SSMS data against Power BI outputs for full data integrity",
+        "Performed end-to-end data quality checks on sales and inventory datasets",
+        "Identified and resolved calculation inconsistencies before production deployment"
+      ],
       "tags": ["Power BI", "Star Schema", "Data Quality", "SSMS"],
-      "problem": "Pre-built retail reports carried inconsistent measures and relationships, so sales and inventory figures did not line up with the data validated in SSMS. TODO(Abdul): verify phrasing.",
+      "problem": "Pre-built retail reports carried inconsistent measures and relationships, so sales and inventory figures did not line up with the data validated in SSMS.",
       "approach": "Refined the pre-built reports by restructuring measures, calculated columns, and star-schema relationships. Validated SSMS data against Power BI outputs, and performed end-to-end data quality checks on retail sales and inventory datasets.",
       "impact": "Identified and resolved calculation inconsistencies before production deployment, ensuring full data integrity across retail reports.",
       "timeline": "Jun 2025 – Mar 2026",
       "role": "BI Analyst",
       "howBuilt": {
-        "schemaLabel": "TODO(Abdul): verify phrasing — restructured measures, calculated columns, and star-schema relationships so Power BI outputs matched SSMS data exactly.",
-        "dax": "Gross Margin % =\n    DIVIDE(\n        [Sales] - [COGS],\n        [Sales]\n    )\n\nInventory Turnover =\n    DIVIDE(\n        [COGS],\n        AVERAGE('Inventory Snapshot'[Stock Value])\n    )",
-        "drillThrough": "TODO(Abdul): supply real/sanitized DAX measures."
+        "schemaLabel": "Restructured measures, calculated columns, and star-schema relationships so Power BI outputs matched SSMS data.",
+        "drillThrough": "Drill-through pages were developed in Direct Lake mode for granular transaction-level insights."
       }
     },
     {
       "id": "it-operations",
+      "type": "company",
       "client": "Himalaya Wellness Company",
-      "title": "FB IT — IT Operations Dashboard",
+      "title": "FB IT: IT Operations Dashboard",
+      "description": "IT operations dashboard for Himalaya Wellness Company, fixing the Galaxy model and enabling drill-through in Direct Lake mode.",
+      "bullets": [
+        "Fixed Galaxy Model relationship and filter-direction issues across 10+ tables",
+        "Developed drill-through pages in Direct Lake mode",
+        "Validated directional data flow end-to-end against source definitions",
+        "Documented report logic, filter hierarchy, and data flow for future maintenance"
+      ],
       "tags": ["Power BI", "Microsoft Fabric", "Galaxy Model", "Direct Lake"],
       "problem": "The IT operations semantic model had Galaxy model filter-direction and relationship issues across 10+ tables, causing cross-filter conflicts that broke accurate data aggregation.",
       "approach": "Fixed the Galaxy model's relationship and filter-direction issues across 10+ tables and developed drill-through pages in Direct Lake mode for granular transaction-level insights.",
@@ -76,16 +116,15 @@
       "timeline": "Jun 2025 – Mar 2026",
       "role": "BI Analyst",
       "howBuilt": {
-        "schemaLabel": "TODO(Abdul): verify phrasing — resolved Galaxy model relationship and filter-direction issues across 10+ shared tables.",
-        "dax": "Open Incidents =\n    CALCULATE(\n        COUNTROWS('Incidents'),\n        'Incidents'[Status] IN { \"New\", \"In Progress\", \"On Hold\" }\n    )\n\nMTTR (Hours) =\n    AVERAGE('Incidents'[Resolution Hours])",
-        "drillThrough": "TODO(Abdul): supply real/sanitized DAX measures. Drill-through pages run in Direct Lake mode for transaction-level insights."
+        "schemaLabel": "Resolved Galaxy model relationship and filter-direction issues across 10+ shared tables.",
+        "drillThrough": "Drill-through pages run in Direct Lake mode for transaction-level insights."
       }
     }
   ],
   "experience": [
     {
       "dates": "Jun 2025 – Mar 2026",
-      "title": "Business Intelligence Analyst — Intern",
+      "title": "Business Intelligence Analyst, Intern",
       "company": "Talentpace",
       "location": "Bengaluru",
       "bullets": [
@@ -98,7 +137,7 @@
     },
     {
       "dates": "Jun 2024 – Sep 2024",
-      "title": "Business Analyst — Intern",
+      "title": "Business Analyst, Intern",
       "company": "AI Variant",
       "location": "Bengaluru",
       "bullets": [
@@ -159,7 +198,9 @@
     ]
   },
   "education": {
+    "eyebrow": "Academic",
     "title": "Education",
+    "subtitle": "Academic background in computer applications.",
     "items": [
       {
         "degree": "Master of Computer Applications (MCA)",

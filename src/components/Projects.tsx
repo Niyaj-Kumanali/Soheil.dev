@@ -1,8 +1,13 @@
 import * as React from "react"
-import { ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { SectionHeader } from "@/components/SectionHeader"
 import { CaseStudyDialog } from "@/components/CaseStudyDialog"
 import { projects, caseStudies, type CaseStudy } from "@/lib/siteData"
@@ -30,22 +35,73 @@ export function Projects() {
           center
         />
 
-        <div className="space-y-8">
+        <TooltipProvider>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {caseStudies.map((study) => (
             <article
               key={study.id}
-              className="relative overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg"
+              onClick={() => openStudy(study)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault()
+                  openStudy(study)
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              className="group relative cursor-pointer overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow duration-300 outline-none hover:shadow-lg focus-visible:ring-2 focus-visible:ring-accent"
             >
               <div
                 className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-accent/60 to-accent"
                 aria-hidden="true"
               />
-              <div className="p-8 md:p-10">
-                <div className="flex flex-col gap-6">
-                  <p className="text-sm font-medium text-accent">{study.client}</p>
-                  <h3 className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">
+              <div className="absolute top-4 right-4">
+                <Tooltip>
+                  <TooltipTrigger
+                      render={
+                        <span
+                          aria-label="View case study"
+                          className="inline-flex size-8 items-center justify-center rounded-lg bg-muted text-secondary transition-colors group-hover:bg-accent group-hover:text-primary-foreground"
+                        />
+                      }
+                    >
+                      <ArrowUpRight className="size-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>View full case study</TooltipContent>
+                  </Tooltip>
+                </div>
+              <div className="flex h-full flex-col p-8">
+                <div className="flex flex-1 flex-col gap-6">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <p className="text-sm font-medium text-accent">{study.client}</p>
+                    <Badge
+                      variant="outline"
+                      className={
+                        study.type === "company"
+                          ? "border-accent/30 bg-accent/10 text-accent"
+                          : "border-chart-purple/30 bg-chart-purple/10 text-chart-purple"
+                      }
+                    >
+                      {study.type === "company" ? "Company" : "Personal"}
+                    </Badge>
+                  </div>
+                  <h3 className="text-2xl font-semibold tracking-tight text-ink">
                     {study.title}
                   </h3>
+                  <p className="text-base leading-relaxed text-secondary">
+                    {study.description}
+                  </p>
+                  <ul className="flex flex-col gap-2">
+                    {study.bullets.map((bullet) => (
+                      <li key={bullet} className="flex gap-2.5 text-sm text-secondary">
+                        <span
+                          className="mt-2 size-1.5 shrink-0 rounded-full bg-accent"
+                          aria-hidden="true"
+                        />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                   <div className="flex flex-wrap gap-2">
                     {study.tags.map((tag) => (
                       <Badge key={tag} variant="secondary">
@@ -53,45 +109,12 @@ export function Projects() {
                       </Badge>
                     ))}
                   </div>
-                  <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                    <div>
-                      <h4 className="mb-1.5 text-xs font-semibold tracking-widest text-secondary uppercase">
-                        Problem
-                      </h4>
-                      <p className="text-base leading-relaxed text-secondary">
-                        {study.problem}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="mb-1.5 text-xs font-semibold tracking-widest text-secondary uppercase">
-                        Approach
-                      </h4>
-                      <p className="text-base leading-relaxed text-secondary">
-                        {study.approach}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="mb-1.5 text-xs font-semibold tracking-widest text-secondary uppercase">
-                        Impact
-                      </h4>
-                      <p className="text-base leading-relaxed text-secondary">
-                        <span className="font-semibold text-foreground">
-                          {study.impact}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-2">
-                    <Button variant="outline" onClick={() => openStudy(study)}>
-                      {projects.caseStudyCta}
-                      <ArrowRight data-icon="inline-end" />
-                    </Button>
-                  </div>
                 </div>
               </div>
             </article>
           ))}
-        </div>
+          </div>
+        </TooltipProvider>
       </div>
 
       <CaseStudyDialog
