@@ -101,8 +101,9 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--text-primary);
+  --color-primary: var(--accent);
   --color-primary-foreground: var(--bg-elevated);
+  --color-ink: var(--text-primary);
   --color-secondary: var(--text-secondary);
   --color-secondary-foreground: var(--bg-elevated);
   --color-muted: var(--bg-subtle);

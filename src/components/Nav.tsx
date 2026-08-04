@@ -5,13 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ThemeToggle"
 import { cn } from "@/lib/utils"
-
-const navLinks = [
-  { href: "#dashboards", label: "Dashboards" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
-]
+import { navLinks, profile } from "@/lib/siteData"
 
 export function Nav() {
   const [scrolled, setScrolled] = React.useState(false)
@@ -26,28 +20,32 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-40 h-16 border-b border-transparent bg-background transition-colors",
-        scrolled && "border-border bg-background/95 backdrop-blur-sm"
+        "fixed inset-x-0 top-0 z-40 h-16 border-b border-transparent bg-transparent transition-all duration-300",
+        scrolled && "border-border bg-background/80 backdrop-blur-lg"
       )}
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-16 max-w-[1120px] items-center justify-between px-6 md:px-8"
+        className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 md:px-8"
       >
-        <a href="#hero" className="flex items-center gap-2">
-          <BarChart3 className="size-5 text-accent" aria-hidden="true" />
-          <span className="text-sm font-semibold text-primary hidden sm:inline">
-            Abdul Hameed Sohail
+        <a href="#hero" className="flex items-center gap-2.5">
+          <span className="flex size-8 items-center justify-center rounded-lg bg-accent/10 text-accent">
+            <BarChart3 className="size-4" aria-hidden="true" />
           </span>
-          <span className="text-sm font-semibold text-primary sm:hidden">AHS</span>
+          <span className="text-sm font-semibold tracking-tight text-ink hidden sm:inline">
+            {profile.name}
+          </span>
+          <span className="text-sm font-semibold tracking-tight text-ink sm:hidden">
+            {profile.shortName}
+          </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-secondary transition-colors hover:text-primary"
+              className="rounded-md px-3 py-2 text-sm font-medium text-secondary transition-colors hover:text-ink"
             >
               {link.label}
             </a>
@@ -56,8 +54,8 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <a
-            href="/Abdul_Hameed_Sohail.pdf"
-            download="Abdul_Hameed_Sohail.pdf"
+            href={profile.resumeUrl}
+            download={profile.resumeFileName}
             className="hidden sm:inline-block"
           >
             <Button size="sm">
@@ -92,14 +90,14 @@ function MobileNav() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm text-secondary transition-colors hover:bg-muted hover:text-primary"
+              className="rounded-lg px-3 py-2.5 text-sm text-secondary transition-colors hover:bg-muted hover:text-ink"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="/Abdul_Hameed_Sohail.pdf"
-            download="Abdul_Hameed_Sohail.pdf"
+            href={profile.resumeUrl}
+            download={profile.resumeFileName}
             onClick={() => setOpen(false)}
             className="mt-4 px-3"
           >

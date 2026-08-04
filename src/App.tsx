@@ -2,7 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Nav } from "@/components/Nav"
 import { Hero } from "@/components/Hero"
 import { ImpactStrip } from "@/components/ImpactStrip"
-import { DashboardShowcase } from "@/components/DashboardShowcase"
+import { Projects } from "@/components/Projects"
 import { Experience } from "@/components/Experience"
 import { Skills } from "@/components/Skills"
 import { Certifications } from "@/components/Certifications"
@@ -16,7 +16,7 @@ function App() {
       <main>
         <Hero />
         <ImpactStrip />
-        <DashboardShowcase />
+        <Projects />
         <Experience />
         <Skills />
         <Certifications />

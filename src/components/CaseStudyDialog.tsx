@@ -5,8 +5,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import type { ReactNode } from "react"
 import { Badge } from "@/components/ui/badge"
-import type { CaseStudy } from "@/lib/caseStudies"
+import type { CaseStudy } from "@/lib/siteData"
 
 export function CaseStudyDialog({
   study,
@@ -19,20 +20,20 @@ export function CaseStudyDialog({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto">
+      <DialogContent className="max-h-[85vh] max-w-5xl overflow-y-auto">
         {study && (
           <>
             <DialogHeader className="gap-3 pr-8">
               <DialogTitle className="text-2xl font-semibold">
                 {study.title}
               </DialogTitle>
-              <DialogDescription className="text-sm text-secondary">
+              <DialogDescription className="text-base text-secondary">
                 Case study — recreated with a public dataset in place of
                 confidential client data.
               </DialogDescription>
             </DialogHeader>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-secondary">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-base text-secondary">
               <span>
                 <span className="font-medium text-foreground">Client:</span>{" "}
                 {study.client}
@@ -97,12 +98,12 @@ function Section({
   children,
 }: {
   title: string
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <div>
-      <h3 className="mb-1.5 text-base font-semibold">{title}</h3>
-      <p className="text-sm leading-relaxed text-secondary">{children}</p>
+      <h3 className="mb-2 text-lg font-semibold">{title}</h3>
+      <p className="text-base leading-relaxed text-secondary">{children}</p>
     </div>
   )
 }

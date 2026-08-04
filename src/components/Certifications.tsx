@@ -1,95 +1,72 @@
-import { ExternalLink, BadgeCheck } from "lucide-react"
+import { ExternalLink, BadgeCheck, GraduationCap } from "lucide-react"
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-
-const certifications = [
-  {
-    title: "Microsoft Certified: Power BI Data Analyst Associate (PL-300)",
-    issuer: "Microsoft",
-    date: "Oct 2025",
-    verifyUrl: "#", // TODO(Abdul): paste real Microsoft Learn/Credly badge URL
-  },
-  {
-    title: "Business Analytics",
-    issuer: "ExcelR Solution Institute, Bangalore",
-    date: "Aug 2024",
-    verifyUrl: null,
-  },
-]
-
-const education = [
-  {
-    degree: "Master of Computer Applications (MCA)",
-    institution: "Jain University, Bangalore",
-    dates: "Jul 2025 – Present",
-  },
-  {
-    degree: "Bachelor of Computer Applications (BCA)",
-    institution: "Ramaiah Institute of Business Studies, Bangalore",
-    dates: "Sep 2020 – May 2024",
-  },
-]
+import { SectionHeader } from "@/components/SectionHeader"
+import { certifications, education } from "@/lib/siteData"
 
 export function Certifications() {
   return (
     <section
       id="certifications"
       aria-label="Certifications and education"
-      className="mx-auto max-w-[1120px] px-6 py-20 md:px-8 md:py-28"
+      className="mx-auto max-w-[1280px] px-6 py-24 sm:py-32 md:px-8"
     >
-      <div className="mb-12">
-        <p className="text-sm font-medium tracking-wide text-accent uppercase">
-          Verified
-        </p>
-        <h2 className="mt-3 text-4xl font-semibold tracking-tight text-primary md:text-5xl">
-          Certifications
-        </h2>
-      </div>
+      <SectionHeader
+        eyebrow={certifications.eyebrow}
+        title={certifications.title}
+        subtitle={certifications.subtitle}
+      />
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {certifications.map((cert) => (
-          <Card key={cert.title}>
-            <CardHeader className="flex-row items-start gap-3">
-              <BadgeCheck className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden="true" />
-              <div>
-                <CardTitle>{cert.title}</CardTitle>
-                <CardDescription>
-                  {cert.issuer} · {cert.date}
-                </CardDescription>
-              </div>
-            </CardHeader>
-            <CardContent>
-              {cert.verifyUrl ? (
-                <a
-                  href={cert.verifyUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent-dark"
-                >
-                  Verify credential
-                  <ExternalLink className="size-4" />
-                </a>
-              ) : (
-                <span className="text-sm text-tertiary">
-                  TODO(Abdul): add verification link
-                </span>
-              )}
-            </CardContent>
-          </Card>
+        {certifications.items.map((cert) => (
+          <div
+            key={cert.title}
+            className="flex flex-col rounded-xl border bg-card p-6 shadow-sm transition-colors duration-300 hover:border-accent/20"
+          >
+            <span className="flex size-10 items-center justify-center rounded-lg bg-accent/10 text-accent">
+              <BadgeCheck className="size-5" aria-hidden="true" />
+            </span>
+            <h3 className="mt-4 text-sm leading-snug font-semibold text-ink">
+              {cert.title}
+            </h3>
+            <p className="mt-1 text-xs text-secondary">
+              {cert.issuer} · {cert.date}
+            </p>
+            {cert.verifyUrl && (
+              <a
+                href={cert.verifyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
+              >
+                Verify credential
+                <ExternalLink className="size-3.5" />
+              </a>
+            )}
+          </div>
         ))}
       </div>
 
-      <div className="mt-12 border-t border-border pt-8">
-        <h3 className="mb-4 text-lg font-semibold text-primary">Education</h3>
-        <dl className="grid grid-cols-1 gap-y-4 md:grid-cols-2">
-          {education.map((edu) => (
-            <div key={edu.degree} className="flex flex-col gap-0.5">
-              <dt className="text-sm font-medium text-primary">{edu.degree}</dt>
-              <dd className="text-sm text-secondary">{edu.institution}</dd>
-              <dd className="text-xs text-tertiary">{edu.dates}</dd>
+      <div className="mt-16">
+        <h3 className="mb-6 text-lg font-semibold text-ink">{education.title}</h3>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {education.items.map((edu) => (
+            <div
+              key={edu.degree}
+              className="flex items-start gap-4 rounded-xl border bg-card p-6 shadow-sm transition-colors duration-300 hover:border-accent/20"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                <GraduationCap className="size-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h4 className="text-sm leading-snug font-semibold text-ink">
+                  {edu.degree}
+                </h4>
+                <p className="mt-1 text-xs text-secondary">{edu.institution}</p>
+                <p className="mt-0.5 text-xs text-tertiary">{edu.dates}</p>
+              </div>
             </div>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   )

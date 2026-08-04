@@ -1,57 +1,69 @@
 import { Button } from "@/components/ui/button"
 import { Download, Mail, Phone } from "lucide-react"
 import { LinkedInIcon } from "@/components/LinkedInIcon"
+import { SectionHeader } from "@/components/SectionHeader"
+import { contact, profile } from "@/lib/siteData"
+
+const contactIcons = {
+  email: Mail,
+  phone: Phone,
+  linkedin: LinkedInIcon,
+} as const
 
 export function Contact() {
   return (
     <section
       id="contact"
       aria-label="Contact"
-      className="border-t border-border bg-bg-subtle py-20"
+      className="bg-muted/40 py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-2xl px-6 text-center md:px-8">
-        <h2 className="text-4xl font-semibold tracking-tight text-primary md:text-5xl">
-          Let's talk data.
-        </h2>
-        <p className="mt-4 text-secondary">
-          Whether you're hiring for a BI team or need a second opinion on a
-          dashboard, my inbox is open.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a href="mailto:abdulsohail884@gmail.com">
-            <Button size="lg">
+      <div className="mx-auto max-w-[1280px] px-6 md:px-8">
+        <SectionHeader
+          eyebrow={contact.eyebrow}
+          title={contact.title}
+          subtitle={contact.subtitle}
+          center
+        />
+
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <a href={`mailto:${profile.email}`} className="w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto">
               <Mail data-icon="inline-start" />
-              Email Me
+              {contact.emailCta}
             </Button>
           </a>
           <a
-            href="/Abdul_Hameed_Sohail.pdf"
-            download="Abdul_Hameed_Sohail.pdf"
+            href={profile.resumeUrl}
+            download={profile.resumeFileName}
+            className="w-full sm:w-auto"
           >
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto">
               <Download data-icon="inline-start" />
-              Download Resume
+              {contact.resumeCta}
             </Button>
           </a>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-tertiary">
-          <a
-            href="tel:+919606166837"
-            className="flex items-center gap-1.5 hover:text-secondary"
-          >
-            <Phone className="size-4" />
-            +91 9606166837
-          </a>
-          <a
-            href="https://www.linkedin.com/in/abdul-hameed-sohail"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1.5 hover:text-secondary"
-            aria-label="LinkedIn profile"
-          >
-            <LinkedInIcon />
-            LinkedIn
-          </a>
+
+        <div className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
+          {contact.rows.map((row) => {
+            const Icon = contactIcons[row.type as keyof typeof contactIcons]
+            const external = row.type === "linkedin"
+            return (
+              <a
+                key={row.label}
+                href={row.href}
+                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+                className="group flex items-center gap-4 rounded-xl border bg-card p-4 shadow-sm transition-colors duration-300 hover:border-accent/20"
+              >
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-primary-foreground">
+                  <Icon className="size-5" />
+                </span>
+                <span className="text-sm font-medium text-ink">
+                  {row.label}
+                </span>
+              </a>
+            )
+          })}
         </div>
       </div>
     </section>
