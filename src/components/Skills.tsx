@@ -18,16 +18,16 @@ export function Skills() {
     <section
       id="skills"
       aria-label="Skills"
-      className="bg-muted/40 py-24 sm:py-32"
+      className="flex min-h-screen items-center bg-muted/40 py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-[1280px] px-6 md:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-6 md:px-8">
         <SectionHeader
           eyebrow={skills.eyebrow}
           title={skills.title}
           subtitle={skills.subtitle}
         />
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {skills.groups.map((group) => {
             const Icon = skillIcons[group.icon]
             return (

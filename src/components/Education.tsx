@@ -8,14 +8,15 @@ export function Education() {
     <section
       id="education"
       aria-label="Education"
-      className="mx-auto max-w-[1280px] px-6 py-24 sm:py-32 md:px-8"
+      className="mx-auto flex min-h-screen w-full items-center"
     >
-      <SectionHeader
-        eyebrow={education.eyebrow}
-        title={education.title}
-        subtitle={education.subtitle}
-      />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mx-auto w-full max-w-[1280px] px-6 py-24 sm:py-32 md:px-8">
+        <SectionHeader
+          eyebrow={education.eyebrow}
+          title={education.title}
+          subtitle={education.subtitle}
+        />
+        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {education.items.map((edu) => (
           <div
             key={edu.degree}
@@ -33,6 +34,7 @@ export function Education() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   )

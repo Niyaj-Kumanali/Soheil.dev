@@ -15,9 +15,9 @@ export function Contact() {
     <section
       id="contact"
       aria-label="Contact"
-      className="bg-muted/40 py-24 sm:py-32"
+      className="flex min-h-screen items-center bg-muted/40 py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-[1280px] px-6 md:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-6 md:px-8">
         <SectionHeader
           eyebrow={contact.eyebrow}
           title={contact.title}

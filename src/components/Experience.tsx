@@ -6,15 +6,16 @@ export function Experience() {
     <section
       id="experience"
       aria-label="Experience"
-      className="mx-auto max-w-[1280px] px-6 py-24 sm:py-32 md:px-8"
+      className="mx-auto flex min-h-screen w-full items-center"
     >
-      <SectionHeader
-        eyebrow="Career"
-        title="Experience"
-        subtitle="My professional journey and the impact I've made."
-      />
+      <div className="mx-auto w-full max-w-[1280px] px-6 py-24 sm:py-32 md:px-8">
+        <SectionHeader
+          eyebrow="Career"
+          title="Experience"
+          subtitle="My professional journey and the impact I've made."
+        />
 
-      <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-[140px_1fr]">
+        <div className="grid w-full grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-[140px_1fr]">
         {experience.map((role) => (
           <div key={role.title} className="contents">
             <div className="pt-1 text-sm text-tertiary">{role.dates}</div>
@@ -39,6 +40,7 @@ export function Experience() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   )

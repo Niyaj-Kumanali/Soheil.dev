@@ -6,10 +6,11 @@ export function About() {
     <section
       id="about"
       aria-label="About me"
-      className="mx-auto max-w-[1280px] px-6 py-24 sm:py-32 md:px-8"
+      className="mx-auto flex min-h-screen w-full items-center"
     >
-      <SectionHeader eyebrow={about.eyebrow} title={about.title} />
-      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.3fr_0.7fr]">
+      <div className="mx-auto w-full max-w-[1280px] px-6 py-24 sm:py-32 md:px-8">
+        <SectionHeader eyebrow={about.eyebrow} title={about.title} />
+        <div className="grid w-full grid-cols-1 items-start gap-10 lg:grid-cols-[1.3fr_0.7fr]">
         <div className="space-y-4">
           {about.paragraphs.map((paragraph) => (
             <p
@@ -35,6 +36,7 @@ export function About() {
               </li>
             ))}
           </ul>
+        </div>
         </div>
       </div>
     </section>
