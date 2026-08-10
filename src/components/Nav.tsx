@@ -9,18 +9,25 @@ import { navLinks } from "@/lib/siteData"
 export function Nav() {
   const [scrolled, setScrolled] = React.useState(false)
   const [hidden, setHidden] = React.useState(false)
-  const [progress, setProgress] = React.useState(0)
+  const [active, setActive] = React.useState("#about")
 
   React.useEffect(() => {
     let lastScrollY = window.scrollY
 
     const onScroll = () => {
       const currentScrollY = window.scrollY
-      const max = document.documentElement.scrollHeight - window.innerHeight
-      setProgress(max > 0 ? Math.min(currentScrollY / max, 1) : 0)
       setScrolled(currentScrollY > 8)
       setHidden(currentScrollY > 8 && currentScrollY > lastScrollY)
       lastScrollY = currentScrollY
+
+      let current = "#about"
+      for (const link of navLinks) {
+        const el = document.getElementById(link.href.slice(1))
+        if (el && el.getBoundingClientRect().top <= 120) {
+          current = link.href
+        }
+      }
+      setActive(current)
     }
 
     onScroll()
@@ -36,11 +43,6 @@ export function Nav() {
         hidden && "-translate-y-full"
       )}
     >
-      <span
-        className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-accent transition-transform duration-100"
-        style={{ transform: `scaleX(${progress})` }}
-        aria-hidden="true"
-      />
       <nav
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 md:px-8"
@@ -56,11 +58,20 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="group relative rounded-md px-3 py-2 text-sm font-medium text-secondary transition-colors hover:text-ink"
+              aria-current={active === link.href ? "true" : undefined}
+              className={cn(
+                "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-ink",
+                active === link.href ? "text-ink" : "text-secondary"
+              )}
             >
               {link.label}
               <span
-                className="absolute inset-x-3 -bottom-0.5 h-0.5 scale-x-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-x-100"
+                className={cn(
+                  "absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-accent transition-transform duration-300",
+                  active === link.href
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                )}
                 aria-hidden="true"
               />
             </a>

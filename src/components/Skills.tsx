@@ -3,6 +3,7 @@ import { BarChart3, Workflow, Table2, Database, FileSpreadsheet } from "lucide-r
 
 import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/SectionHeader"
+import { cn } from "@/lib/utils"
 import { skills } from "@/lib/siteData"
 
 const skillIcons: Record<string, LucideIcon> = {
@@ -11,6 +12,12 @@ const skillIcons: Record<string, LucideIcon> = {
   table2: Table2,
   database: Database,
   fileSpreadsheet: FileSpreadsheet,
+}
+
+const sizeClasses: Record<string, string> = {
+  featured: "sm:col-span-2 lg:col-span-3 border-accent/25",
+  wide: "lg:col-span-3",
+  standard: "lg:col-span-2",
 }
 
 export function Skills() {
@@ -27,13 +34,16 @@ export function Skills() {
           subtitle={skills.subtitle}
         />
 
-        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
           {skills.groups.map((group) => {
             const Icon = skillIcons[group.icon]
             return (
               <div
                 key={group.label}
-                className="rounded-xl border bg-card p-6 shadow-sm transition-colors duration-300 hover:border-accent/20"
+                className={cn(
+                  "rounded-xl border bg-card p-6 shadow-sm transition-colors duration-300 hover:border-accent/20",
+                  sizeClasses[group.size ?? "standard"]
+                )}
               >
                 <div className="flex items-center gap-3">
                   <span className="flex size-9 items-center justify-center rounded-lg bg-accent/10 text-accent">

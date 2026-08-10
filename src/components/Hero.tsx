@@ -26,7 +26,7 @@ export function Hero() {
             <span className="block text-accent">{profile.headlineHighlight}</span>
             {profile.headline.split(profile.headlineHighlight)[1]}
           </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-secondary sm:text-xl">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-secondary sm:text-lg">
             {profile.subhead}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 pt-2">

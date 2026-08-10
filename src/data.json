@@ -158,26 +158,31 @@
       {
         "icon": "barChart3",
         "label": "Power BI",
+        "size": "featured",
         "chips": ["Dashboard Design", "KPI Development", "DAX & Measures", "Drill-through", "Bookmarks", "Row-Level Security", "Custom Visuals", "Performance Analyzer"]
       },
       {
         "icon": "workflow",
         "label": "Microsoft Fabric",
+        "size": "wide",
         "chips": ["Dataflow Gen2", "Direct Lake", "Semantic Models", "Data Pipeline", "Lakehouse", "OneLake Shortcuts", "Medallion Architecture", "Notebooks"]
       },
       {
         "icon": "table2",
         "label": "Data Modeling",
+        "size": "standard",
         "chips": ["Star Schema", "Galaxy Model", "Relationships", "Filter Direction", "Snowflake Schema", "Role-Playing Dimensions", "Time Intelligence", "Row & Filter Context"]
       },
       {
         "icon": "database",
         "label": "SQL & Database",
+        "size": "standard",
         "chips": ["Joins", "Subqueries", "Views", "Stored Procedures", "SSMS", "CTEs", "Window Functions", "Query Optimization"]
       },
       {
         "icon": "fileSpreadsheet",
         "label": "Excel & ETL",
+        "size": "standard",
         "chips": ["Power Query (M)", "Pivot Tables", "VLOOKUP", "Data Cleaning", "XLOOKUP", "Power Pivot", "Conditional Formatting", "Data Validation"]
       }
     ]
