@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Mail, MapPin } from "lucide-react"
+import { ArrowRight, Briefcase, Mail, MapPin } from "lucide-react"
 import { LinkedInIcon } from "@/components/LinkedInIcon"
 import { profile, impactStats } from "@/lib/siteData"
 
@@ -43,6 +43,10 @@ export function Hero() {
             </a>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 text-sm text-tertiary">
+            <span className="flex items-center gap-1.5 text-secondary">
+              <Briefcase className="size-4" />
+              {profile.openTo}
+            </span>
             <span className="flex items-center gap-1.5">
               <MapPin className="size-4" />
               {profile.location}

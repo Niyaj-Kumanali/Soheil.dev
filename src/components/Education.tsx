@@ -31,6 +31,9 @@ export function Education() {
               </h3>
               <p className="mt-1 text-xs text-secondary">{edu.institution}</p>
               <p className="mt-0.5 text-xs text-tertiary">{edu.dates}</p>
+              {edu.mode && (
+                <p className="mt-1.5 text-xs text-secondary italic">{edu.mode}</p>
+              )}
             </div>
           </div>
         ))}

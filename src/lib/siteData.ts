@@ -13,6 +13,7 @@ export type CaseStudy = {
   impact: string
   timeline: string
   role: string
+  visual: "finance" | "retail" | "it"
   howBuilt: {
     schemaLabel: string
     drillThrough: string

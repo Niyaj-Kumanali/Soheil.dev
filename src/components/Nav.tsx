@@ -9,12 +9,15 @@ import { navLinks } from "@/lib/siteData"
 export function Nav() {
   const [scrolled, setScrolled] = React.useState(false)
   const [hidden, setHidden] = React.useState(false)
+  const [progress, setProgress] = React.useState(0)
 
   React.useEffect(() => {
     let lastScrollY = window.scrollY
 
     const onScroll = () => {
       const currentScrollY = window.scrollY
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      setProgress(max > 0 ? Math.min(currentScrollY / max, 1) : 0)
       setScrolled(currentScrollY > 8)
       setHidden(currentScrollY > 8 && currentScrollY > lastScrollY)
       lastScrollY = currentScrollY
@@ -33,6 +36,11 @@ export function Nav() {
         hidden && "-translate-y-full"
       )}
     >
+      <span
+        className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-accent transition-transform duration-100"
+        style={{ transform: `scaleX(${progress})` }}
+        aria-hidden="true"
+      />
       <nav
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6 md:px-8"

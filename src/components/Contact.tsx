@@ -58,7 +58,7 @@ export function Contact() {
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-primary-foreground">
                   <Icon className="size-5" />
                 </span>
-                <span className="text-sm font-medium text-ink">
+                <span className="min-w-0 text-sm font-medium break-all text-ink">
                   {row.label}
                 </span>
               </a>
